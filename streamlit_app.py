@@ -9,12 +9,13 @@ from langchain.schema import (
 import streamlit as st
 from streamlit_chat import message
 
+openai_api_key = st.secrets["openai"]
+
 def init():
     st.title("Customer simulator")
-    openai_api_key = st.secrets["openai"]
     chat=ChatOpenAI(temperature=0.5,openai_api_key=openai_api_key)
     customer_persona="You are a customer responding to a call from a sales person"
-    llm=OpenAI(temperature=0,openai_api_key=openai_api_key)
+    
 
 def main():
     init()
@@ -65,6 +66,7 @@ def evaluate(discussion):
     if discussion=="":
         st.write("No discussion to evaluate")
     else:
+        llm=OpenAI(temperature=0,openai_api_key=openai_api_key)
         
         #context of the discussion
         context= "Evaluate this discussion between a sales person and a customer." 
