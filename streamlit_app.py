@@ -12,7 +12,7 @@ st.title("Customer simulator")
 
 openai_api_key = st.secrets["openai"]
 
-chat=ChatOpenAI(temperature=0.5)
+chat=ChatOpenAI(temperature=0.5,openai_api_key=openai_api_key)
 
 messages=[
  SystemMessage(content="you are a helpful assistant")
