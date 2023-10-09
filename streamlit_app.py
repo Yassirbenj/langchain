@@ -22,7 +22,8 @@ if "messages" not in st.session_state:
 if prompt := st.chat_input("Start your call with an introduction"):
   message(prompt,is_user=True)
   st.session_state.messages.append(HumanMessage(content=prompt))
-  response=chat(st.session_state.messages)
+  with st.spinner ("Thinking..."):
+    response=chat(st.session_state.messages)
   message(response.content,is_user=False)
 
 
