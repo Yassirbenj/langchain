@@ -28,9 +28,9 @@ if prompt := st.chat_input("Start your call with an introduction"):
 messages=st.session_state.get('messages',[])
 for i,msg in enumerate(messages): 
     if i % 2 == 0:
-        st.write('yes')
-    #    message(msg,is_user=True,key=str(i)+'_user')
-    #else:
-     #   message(msg,is_user=False,key=str(i)+'_ai')
+    #    st.write('yes')
+        message(msg.content,is_user=True,key=str(i)+'_user')
+    else:
+        message(msg.content,is_user=False,key=str(i)+'_ai')
 
 
