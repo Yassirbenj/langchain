@@ -73,7 +73,7 @@ def evaluate(discussion):
         context+="evaluate if a sales person arguments for a sell are convincing or not."
         context+="please evaluate as regard following factors: "
         context+="Clarity and Relevance,Credibility,Benefits and Value,Objection Handling,Emotional Appeal,Call to Action,Listening Skills,Comparison and Differentiation"
-        context+="Please provide a rating over 10 for the sales person per factor and a global rating. Below the discussion: "
+        context+="Please provide a rating over 10 for the sales person per factor and a global rating. Give explanations for each factor. Below the discussion: "
 
         evaluation = llm(context+discussion)
 
