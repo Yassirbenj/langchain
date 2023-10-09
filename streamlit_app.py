@@ -21,6 +21,7 @@ messages=[
 if prompt := st.chat_input("Start your call with an introduction"):
   message(prompt,is_user=True)
   messages.append(HumanMessage(content=prompt))
+  st.write(messages)
   #response=chat(message)
   #message(response.content,is_user=False)
 
