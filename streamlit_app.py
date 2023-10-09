@@ -9,6 +9,7 @@ import streamlit as st
 from streamlit_chat import message
 
 def init():
+    st.button("Evaluate", type="primary")
     st.title("Customer simulator")
     openai_api_key = st.secrets["openai"]
     chat=ChatOpenAI(temperature=0.5,openai_api_key=openai_api_key)
