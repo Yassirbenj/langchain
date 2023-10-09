@@ -55,7 +55,6 @@ def main():
         else:
             message(msg.content,is_user=False,key=str(i)+'_customer')
     
-if __name__=="__streamlit_app__":
-    main()
+main()
 
 
