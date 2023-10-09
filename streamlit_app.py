@@ -14,15 +14,15 @@ openai_api_key = st.secrets["openai"]
 
 chat=ChatOpenAI(temperature=0.5,openai_api_key=openai_api_key)
 
-messages=[
- SystemMessage(content="you are a helpful assistant")
-]
+if "messages" not in st.session_state:
+    st.session_state.messages=[
+     SystemMessage(content="you are a helpful assistant")
+    ]
 
 if prompt := st.chat_input("Start your call with an introduction"):
   message(prompt,is_user=True)
-  messages.append(HumanMessage(content=prompt))
-  st.write(messages)
-  response=chat(messages)
+  st.session_state.messages.append(HumanMessage(content=prompt))
+  response=chat(st.session_state.messages)
   message(response.content,is_user=False)
 
 
