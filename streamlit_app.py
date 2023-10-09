@@ -11,6 +11,8 @@ from streamlit_chat import message
 
 def init():
     evaluate_button=st.button("Evaluate")
+    if evaluate_button:
+        evaluate(discussion)
     st.title("Customer simulator")
     openai_api_key = st.secrets["openai"]
     chat=ChatOpenAI(temperature=0.5,openai_api_key=openai_api_key)
@@ -79,7 +81,6 @@ def evaluate(discussion):
 
 main()
 
-if evaluate_button:
-    evaluate(discussion)
+
 
 
