@@ -26,9 +26,9 @@ if prompt := st.chat_input("Start your call with an introduction"):
   st.session_state.messages.append(AIMessage(content=response.content))
 
 messages=st.session_state.get('messages',[])
-for i,msg in enumerate(messages):
-    st.write('yes') 
-    # if i % 2 == 0:
+for i,msg in enumerate(messages): 
+    if i % 2 == 0:
+        st.write('yes')
     #    message(msg,is_user=True,key=str(i)+'_user')
     #else:
      #   message(msg,is_user=False,key=str(i)+'_ai')
