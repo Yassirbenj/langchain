@@ -20,10 +20,16 @@ if "messages" not in st.session_state:
     ]
 
 if prompt := st.chat_input("Start your call with an introduction"):
-  message(prompt,is_user=True)
   st.session_state.messages.append(HumanMessage(content=prompt))
   with st.spinner ("Thinking..."):
     response=chat(st.session_state.messages)
-  message(response.content,is_user=False)
+  st.session_state.messages.append(AIMessage(content=response.content))
+
+messages=st.session_state.get('messages',[])
+for i,msg in messages:
+    if i % 2 == 0:
+        message(msg,is_user=True,key=str(i)+'_user')
+    else:
+        message(msg,is_user=False,key=str(i)+'_ai')
 
 
