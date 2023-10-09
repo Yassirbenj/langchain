@@ -15,7 +15,6 @@ def init():
     openai_api_key = st.secrets["openai"]
     chat=ChatOpenAI(temperature=0.5,openai_api_key=openai_api_key)
     customer_persona="You are a customer responding to a call from a sales person"
-    discussion=""
 
 def main():
     init()
@@ -49,6 +48,7 @@ def main():
       st.session_state.messages.append(AIMessage(content=response.content))
     
     messages=st.session_state.get('messages',[])
+    discussion=""
     for i,msg in enumerate(messages[1:]): 
         if i % 2 == 0:
             message(msg.content,is_user=True,key=str(i)+'_saleperson')
