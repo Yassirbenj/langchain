@@ -10,7 +10,7 @@ import streamlit as st
 from streamlit_chat import message
 
 def init():
-    st.button("Evaluate", type="primary")
+    evaluate_button=st.button("Evaluate")
     st.title("Customer simulator")
     openai_api_key = st.secrets["openai"]
     chat=ChatOpenAI(temperature=0.5,openai_api_key=openai_api_key)
@@ -57,9 +57,9 @@ def main():
             message(msg.content,is_user=False,key=str(i)+'_customer')
             discussion+=f"Customer: {msg.content}. "
 
-    st.write (discussion)
+    return discussion
     
-def evaluate():
+def evaluate(discussion):
     if discussion=="":
         st.write("No discussion to evaluate")
     else:
@@ -72,10 +72,14 @@ def evaluate():
         context+="Clarity and Relevance,Credibility,Benefits and Value,Objection Handling,Emotional Appeal,Call to Action,Listening Skills,Comparison and Differentiation"
         context+="Please provide a rating over 10 for the sales person per factor and a global rating. Below the discussion: "
 
+        evaluation = llm(context+discussion)
+
+        st.write(evaluation)
         
-    
-    
 
 main()
+
+if evaluate_button:
+    evaluate(discussion)
 
 
