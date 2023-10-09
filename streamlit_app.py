@@ -39,6 +39,8 @@ if "messages" not in st.session_state:
      SystemMessage(content=customer_persona)
     ]
 
+discussion=""
+
 if prompt := st.chat_input("Start your call with an introduction"):
   st.session_state.messages.append(HumanMessage(content=prompt))
   with st.spinner ("Thinking..."):
@@ -49,8 +51,10 @@ messages=st.session_state.get('messages',[])
 for i,msg in enumerate(messages[1:]): 
     if i % 2 == 0:
     #    st.write('yes')
-        message(msg.content,is_user=True,key=str(i)+'_user')
+        message(msg.content,is_user=True,key=str(i)+'_saleperson')
     else:
-        message(msg.content,is_user=False,key=str(i)+'_ai')
+        message(msg.content,is_user=False,key=str(i)+'_customer')
+
+st.write(messages)
 
 
