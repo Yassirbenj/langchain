@@ -11,15 +11,12 @@ from streamlit_chat import message
 
 openai_api_key = st.secrets["openai"]
 
-def init():
-    st.title("Customer simulator")
-    chat=ChatOpenAI(temperature=0.5,openai_api_key=openai_api_key)
-    
+st.title("Customer simulator")
     
 
 def main():
-    init()
     customer_persona="You are a customer responding to a call from a sales person"
+    chat=ChatOpenAI(temperature=0.5,openai_api_key=openai_api_key)
     with st.sidebar:
         with st.form("input form"):
             st.write("<h3>Enter the customer personae ✨</h3>", unsafe_allow_html=True)
